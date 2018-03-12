@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 95709135697360816}
   - component: {fileID: 114979203866377580}
   - component: {fileID: 61994680418423646}
+  - component: {fileID: 114737197584203600}
   m_Layer: 0
   m_Name: Star Trophy
   m_TagString: Untagged
@@ -229,7 +230,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.09678745}
@@ -262,6 +263,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114737197584203600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1890388212905946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b3c7978cce95a4ea732b77e79e3282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 700
 --- !u!114 &114979203866377580
 MonoBehaviour:
   m_ObjectHideFlags: 1
