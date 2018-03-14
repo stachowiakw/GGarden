@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Health : MonoBehaviour {
     public float health;
-    public Attacker attackersAttacker;
 
 	// Use this for initialization
 	void Start () {
