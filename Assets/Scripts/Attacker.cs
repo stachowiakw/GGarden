@@ -8,20 +8,22 @@ public class Attacker : MonoBehaviour {
     private float currentSpeed;
     private GameObject currentTarget;
     private Health EnemyHealthComponent;
+    private Health OwnHealthComponent;
     private Animator anim;
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         //Rigidbody2D myRigidbody = gameObject.AddComponent<Rigidbody2D>();
         //myRigidbody.isKinematic = true;
         anim = GetComponent<Animator>();
+        OwnHealthComponent = GetComponent<Health>();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
-	}
+    }
 
     void OnTriggerEnter2D()
     {
@@ -58,4 +60,5 @@ public class Attacker : MonoBehaviour {
     }
 
     public void GoOn() { anim.SetBool("isAttacking", false); }
+
 }

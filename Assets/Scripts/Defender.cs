@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Defender : MonoBehaviour {
     public GameObject projectile;
+    public GameObject gun;
+    private GameObject projectileParent;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Start()
+    {
+        projectileParent = GameObject.Find("ProjectileParent");
+        if (!projectileParent)
+        {
+            projectileParent = new GameObject("ProjectileParent");
+        }
+    }
 
     void OnTriggerEnter2D()
     {
@@ -21,6 +22,9 @@ public class Defender : MonoBehaviour {
     }
 
     public void ThrowProjectile() {
-        Instantiate(projectile, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y,-1), Quaternion.identity);
+        GameObject ProjectileSpawned = Instantiate(projectile) as GameObject;
+        ProjectileSpawned.transform.position = gun.transform.position;
+        ProjectileSpawned.transform.parent = projectileParent.transform;
+        //GameObject ProjectileSpawned = Instantiate(projectile, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity) as GameObject;
     }
 }
