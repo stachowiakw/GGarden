@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour {
 
+    [Tooltip("Avarange number of seconds between spawning attacker")]
+    public float seenEverySeconds;
+
     [Range(0f, 2f)]
     private float currentSpeed;
     private GameObject currentTarget;
