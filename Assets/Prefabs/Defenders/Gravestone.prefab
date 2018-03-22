@@ -139,6 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52b07b6e37f3e94db19ed0150697ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 0}
+  gun: {fileID: 0}
+  defenderCost: 5
 --- !u!114 &114769111876011830
 MonoBehaviour:
   m_ObjectHideFlags: 1

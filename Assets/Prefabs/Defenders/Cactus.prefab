@@ -140,7 +140,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 8bfdb819ff08a5941aa0a97264be24b9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -158,8 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1491755316956102, guid: f2b67240ff155a6428991d9105032c30, type: 2}
   gun: {fileID: 1360804739132322}
-  projectileParent: {fileID: 1832535954810554, guid: b9ea9b265674983468951b42ed01755a,
-    type: 2}
+  defenderCost: 5
 --- !u!114 &114349172862134762
 MonoBehaviour:
   m_ObjectHideFlags: 1

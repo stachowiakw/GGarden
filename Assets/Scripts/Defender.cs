@@ -10,28 +10,35 @@ public class Defender : MonoBehaviour
     private Animator animator;
     private Spawner[] AllSpawners;
     private Spawner SpawnerInDefendersLine;
+    private ScoreController scoreController;
+    public int defenderCost;
 
     private void Start()
     {
         animator = GameObject.FindObjectOfType<Animator>();
         AllSpawners = GameObject.FindObjectsOfType<Spawner>();
         setDefendersSpawner();
+        scoreController = GameObject.FindObjectOfType<ScoreController>();
 
         projectileParent = GameObject.Find("ProjectileParent");
         if (!projectileParent)
         {
             projectileParent = new GameObject("ProjectileParent");
         }
+        useStarPoint();
     }
     private void Update()
     {
-        if (isAttackerAheadInLane())
+        if (gun)
         {
-            animator.SetBool("isAttacking", true);
-        }
-        else
-        {
-            animator.SetBool("isAttacking", false);
+            if (isAttackerAheadInLane())
+            {
+                animator.SetBool("isAttacking", true);
+            }
+            else
+            {
+                animator.SetBool("isAttacking", false);
+            }
         }
     }
 
@@ -78,5 +85,19 @@ public class Defender : MonoBehaviour
         ProjectileSpawned.transform.position = gun.transform.position;
         ProjectileSpawned.transform.parent = projectileParent.transform;
         //GameObject ProjectileSpawned = Instantiate(projectile, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity) as GameObject;
+    }
+
+    void addStarPoint(int addedScore)
+    {
+        scoreController.score = scoreController.score + addedScore;
+    }
+
+    public void useStarPoint()
+    {
+        scoreController.score -= defenderCost;
+        if (scoreController.score < 0)
+        {
+            scoreController.score = 0;
+        }
     }
 }

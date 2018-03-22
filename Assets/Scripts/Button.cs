@@ -28,5 +28,6 @@ public class Button : MonoBehaviour {
 
         ButtonSprite.color = new Vector4(255,255,255,255);
         SelectedPrefab = ButtonPrefab;
+        //print(SelectedPrefab);
     }
 }

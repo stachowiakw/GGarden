@@ -6,10 +6,15 @@ public class DefenderSpawner : MonoBehaviour {
 
     public Camera myGameCamera;
     private GameObject DefenderParent;
+    private ScoreController scoreController;
+    private GameObject SelectedDefender;
 
     // Use this for initialization
     void Start () {
         myGameCamera = GameObject.FindObjectOfType<Camera>();
+        
+        scoreController = GameObject.FindObjectOfType<ScoreController>();
+        
 
         DefenderParent = GameObject.Find("Defenders");
         if (!DefenderParent)
@@ -25,10 +30,12 @@ public class DefenderSpawner : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        SelectedDefender = Button.SelectedPrefab;
         print(SnapToGrid(CalculateRawWorldPointOfMouseClick()));
-        GameObject DefenderSpawned = Instantiate(Button.SelectedPrefab) as GameObject;
-        DefenderSpawned.transform.position = SnapToGrid(CalculateRawWorldPointOfMouseClick());
-        DefenderSpawned.transform.parent = DefenderParent.transform;
+        if (SelectedDefender.GetComponent<Defender>().defenderCost<=scoreController.score)
+        {
+            SpawnDefender();
+        }
 
     }
 
@@ -50,5 +57,12 @@ public class DefenderSpawner : MonoBehaviour {
     float WorldPositionY = Mathf.RoundToInt(rawWorldPosition.y);
     Vector2 IntWorldPosition = new Vector2 (WorldPositionX, WorldPositionY);
         return IntWorldPosition;
+    }
+
+    void SpawnDefender()
+    {
+        GameObject DefenderSpawned = Instantiate(SelectedDefender) as GameObject;
+        DefenderSpawned.transform.position = SnapToGrid(CalculateRawWorldPointOfMouseClick());
+        DefenderSpawned.transform.parent = DefenderParent.transform;
     }
 }

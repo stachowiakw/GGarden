@@ -298,6 +298,7 @@
     <Compile Include="Assets\Scripts\OptionsController.cs" />
     <Compile Include="Assets\Scripts\PlayerPrefsManager.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
+    <Compile Include="Assets\Scripts\ScoreController.cs" />
     <Compile Include="Assets\Scripts\SetStartVolume.cs" />
     <Compile Include="Assets\Scripts\Shredder.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
