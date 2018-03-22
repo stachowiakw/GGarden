@@ -2,18 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Defender : MonoBehaviour {
+public class Defender : MonoBehaviour
+{
     public GameObject projectile;
     public GameObject gun;
     private GameObject projectileParent;
+    private Animator animator;
+    private Spawner[] AllSpawners;
+    private Spawner SpawnerInDefendersLine;
 
     private void Start()
     {
+        animator = GameObject.FindObjectOfType<Animator>();
+        AllSpawners = GameObject.FindObjectsOfType<Spawner>();
+        setDefendersSpawner();
+
         projectileParent = GameObject.Find("ProjectileParent");
         if (!projectileParent)
         {
             projectileParent = new GameObject("ProjectileParent");
         }
+    }
+    private void Update()
+    {
+        if (isAttackerAheadInLane())
+        {
+            animator.SetBool("isAttacking", true);
+        }
+        else
+        {
+            animator.SetBool("isAttacking", false);
+        }
+    }
+
+    private void setDefendersSpawner()
+    {
+        foreach (Spawner SpawnerLine in AllSpawners)
+        {
+            if (SpawnerLine.transform.position.y == transform.position.y)
+            {
+                SpawnerInDefendersLine = SpawnerLine;
+                return;
+            }
+
+        }
+    }
+
+    bool isAttackerAheadInLane()
+    {
+        //exit if no attackers in line
+        if (SpawnerInDefendersLine.transform.childCount <=0)
+            {
+                return false;
+            }
+
+        //if there are attackers, are they ahead?
+        foreach (Transform child in SpawnerInDefendersLine.transform)
+        {
+            if (child.transform.position.x > transform.position.x)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void OnTriggerEnter2D()
@@ -21,7 +72,8 @@ public class Defender : MonoBehaviour {
         Debug.Log("No elo makrelo: " + name);
     }
 
-    public void ThrowProjectile() {
+    public void ThrowProjectile()
+    {
         GameObject ProjectileSpawned = Instantiate(projectile) as GameObject;
         ProjectileSpawned.transform.position = gun.transform.position;
         ProjectileSpawned.transform.parent = projectileParent.transform;
