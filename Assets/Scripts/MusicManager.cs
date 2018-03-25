@@ -17,8 +17,7 @@ public class MusicManager : MonoBehaviour {
     {
         musicManagerAudioSource = GetComponent<AudioSource>();
     }
-
-    void OnLevelWasLoaded(int level)
+    public void OnLevelWasLoaded(int level)
     {
         if (levelMusicChangeArray[level])
         {

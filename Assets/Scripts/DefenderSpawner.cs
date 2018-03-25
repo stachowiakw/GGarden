@@ -32,7 +32,7 @@ public class DefenderSpawner : MonoBehaviour {
     {
         SelectedDefender = Button.SelectedPrefab;
         print(SnapToGrid(CalculateRawWorldPointOfMouseClick()));
-        if (SelectedDefender.GetComponent<Defender>().defenderCost<=scoreController.score)
+        if (SelectedDefender.GetComponent<Defender>().defenderCost<=scoreController.stars)
         {
             SpawnDefender();
         }

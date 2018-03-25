@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour {
-    public int score;
+    public int stars = 100;
     public Text ScoreText;
     private string ScoreString = "SCORE: ";
 
 	
 	// Update is called once per frame
 	void Update () {
-        ScoreText.text = ScoreString + score;
+        ScoreText.text = ScoreString + stars;
 	}
 }

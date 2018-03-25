@@ -89,15 +89,15 @@ public class Defender : MonoBehaviour
 
     void addStarPoint(int addedScore)
     {
-        scoreController.score = scoreController.score + addedScore;
+        scoreController.stars = scoreController.stars + addedScore;
     }
 
     public void useStarPoint()
     {
-        scoreController.score -= defenderCost;
-        if (scoreController.score < 0)
+        scoreController.stars -= defenderCost;
+        if (scoreController.stars < 0)
         {
-            scoreController.score = 0;
+            scoreController.stars = 0;
         }
     }
 }
