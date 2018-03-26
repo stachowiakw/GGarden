@@ -37,7 +37,6 @@ public class Spawner : MonoBehaviour
 
         float threshold = spawnPerSecond * Time.deltaTime / 5; // 5 BECAUSE 5 LINES
 
-        if (Random.value < threshold) { return true; }
-        else { return false; }
+        return (Random.value < threshold);
     }
 }
