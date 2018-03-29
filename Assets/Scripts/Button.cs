@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Button : MonoBehaviour {
     public static GameObject SelectedPrefab;
@@ -8,9 +9,12 @@ public class Button : MonoBehaviour {
     private SpriteRenderer ButtonSprite;
     private Button[] ButtonArray;
     public GameObject ButtonPrefab;
+    private Text CostIndicator;
 
 	// Use this for initialization
 	void Start () {
+        CostIndicator = GetComponentInChildren<Text>();
+        CostIndicator.text = ButtonPrefab.GetComponent<Defender>().defenderCost.ToString();
         ButtonSprite = SpriteHolder.GetComponent<SpriteRenderer>();
         ButtonSprite.color = new Vector4(0, 0, 0, 255);
         ButtonArray = FindObjectsOfType<Button>();

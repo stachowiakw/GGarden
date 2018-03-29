@@ -11,6 +11,7 @@ public class GameTimer : MonoBehaviour {
     private LevelManager levelManager;
     private GameObject winLabel;
     private bool WinningEnd = false;
+    private GameObject[] entities;
 
     // Use this for initialization
     void Start () {
@@ -35,9 +36,18 @@ public class GameTimer : MonoBehaviour {
 
     void Winning()
     {
+        DestroyAllTaggedObjects();
         winLabel.SetActive(true);
         audioSource.Play();
         Invoke("LoadNextLevelAfterWin", 5);
     }
     void LoadNextLevelAfterWin() { levelManager.LevelChange("03a Win"); }
+
+    void DestroyAllTaggedObjects()
+    {
+        entities = GameObject.FindGameObjectsWithTag("entities");
+        print(entities.Length);
+        foreach (GameObject entity in entities)
+        { Destroy(entity); }
+    }
 }
